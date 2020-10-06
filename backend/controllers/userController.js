@@ -9,7 +9,7 @@ import generateToken from "../utils/generateToken.js";
 const authUser = asyncHandler(async (req, res) => {
     const { email, password} = req.body;
 
-    // Searching MongoDB for email
+    // Searching MongoDB for given email
     const user = await User.findOne({ email });
 
     // Does user exist and password match?
@@ -25,6 +25,43 @@ const authUser = asyncHandler(async (req, res) => {
         // Throw unauthorized status
         res.status(401)
         throw new Error("Invalid email or password");
+    }
+})
+
+// @desc    Register a new user
+// @route   POST /api/users
+// @access  Public
+const registerUser = asyncHandler(async (req, res) => {
+    const { name, email, password} = req.body;
+
+    // Searching MongoDB for given email
+    const userExists = await User.findOne({ email });
+
+    // Does the user already exist in MongoDB?
+    if (userExists) {
+        res.status(400);
+        throw new Error("User already exists")
+    }
+
+    const user = await User.create({
+        name,
+        email,
+        password
+    })
+
+    // Was the user created successfully?
+    if (user) {
+        // Respond with success and their user data
+        res.status(201).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin,
+            token: generateToken(user._id) // Generate Token and respond with it
+        });
+    } else {
+        res.status(400);
+        throw new Error("Invalid user data");
     }
 })
 
@@ -49,4 +86,4 @@ const getUserProfile = asyncHandler(async (req, res) => {
     }
 })
 
-export { authUser, getUserProfile };
+export { authUser, registerUser, getUserProfile };
