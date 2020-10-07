@@ -33,7 +33,7 @@ const ProductScreen = ({ history, match }) => {
                     : 
                     <Row>
                         <Col md={6}>
-                            <Image src={product.image} alt={product.name} className="border border-dark" fluid/>
+                            <Image src={product.image} alt={product.name} className="border border-dark rounded" fluid/>
                         </Col>
                         <Col md={3}>
                             <ListGroup variant="flush">

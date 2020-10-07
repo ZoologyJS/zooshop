@@ -1,1 +1,1 @@
-## eCommerce site using MERN stack
+## Personal eCommerce site using MERN stack + Bootstrap & Redux
