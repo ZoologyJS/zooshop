@@ -16,7 +16,8 @@ import {
 import { 
     orderCreateReducer,
     orderDetailsReducer,
-    orderPayReducer
+    orderPayReducer,
+    orderListMyReducer
 } from "./reducers/orderReducers";
 
 
@@ -31,7 +32,8 @@ const reducer = combineReducers({
     userUpdateProfile: userUpdateProfileReducer,
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,
-    orderPay: orderPayReducer
+    orderPay: orderPayReducer,
+    orderListMy: orderListMyReducer
 });
 
 // Checking the user's browser storage for cart items
