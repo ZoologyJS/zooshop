@@ -13,7 +13,11 @@ import {
     userRegisterReducer,
     userUpdateProfileReducer
 } from "./reducers/userReducers";
-import { orderCreateReducer, orderDetailsReducer } from "./reducers/orderReducers";
+import { 
+    orderCreateReducer,
+    orderDetailsReducer,
+    orderPayReducer
+} from "./reducers/orderReducers";
 
 
 // Combining all reducers being used
@@ -26,7 +30,8 @@ const reducer = combineReducers({
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
     orderCreate: orderCreateReducer,
-    orderDetails: orderDetailsReducer
+    orderDetails: orderDetailsReducer,
+    orderPay: orderPayReducer
 });
 
 // Checking the user's browser storage for cart items
