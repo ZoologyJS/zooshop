@@ -31,9 +31,17 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
     ? JSON.parse(localStorage.getItem("userInfo")) 
     : null;
 
+// Checking the user's browser storage to see if they're logged in
+const shippingAddressFromStorage = localStorage.getItem("shippingAddress") 
+    ? JSON.parse(localStorage.getItem("shippingAddress")) 
+    : {};
+
 // Setting user's cart to whatever is found in browser's storage        
 const initialState = {
-    cart: { cartItems: cartItemsFromStorage },
+    cart: { 
+        cartItems: cartItemsFromStorage,
+        shippingAddress: shippingAddressFromStorage
+    },
     userLogin: { userInfo: userInfoFromStorage }
 };
 

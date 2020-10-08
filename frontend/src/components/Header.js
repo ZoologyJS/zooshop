@@ -37,11 +37,11 @@ const Header = () => {
                             <NavDropdown title={userInfo.name} id="username">
                                 <LinkContainer to="/profile">
                                     <NavDropdown.Item>
-                                        <i class="fas fa-user-cog"></i> Profile
+                                        <i className="fas fa-user-cog"></i> Profile
                                     </NavDropdown.Item>
                                 </LinkContainer>
                                 <NavDropdown.Item onClick={logoutHandler}>
-                                    <i class="fas fa-sign-out-alt"></i> &nbsp;Logout
+                                    <i className="fas fa-sign-out-alt"></i> &nbsp;Logout
                                 </NavDropdown.Item>
                             </NavDropdown>
                         ) : (
