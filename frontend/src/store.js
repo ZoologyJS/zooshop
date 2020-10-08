@@ -9,6 +9,7 @@ import {
     userRegisterReducer,
     userUpdateProfileReducer
 } from "./reducers/userReducers";
+import { orderCreateReducer } from "./reducers/orderReducers"
 
 // Combining all reducers being used
 const reducer = combineReducers({
@@ -18,7 +19,8 @@ const reducer = combineReducers({
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
     userDetails: userDetailsReducer,
-    userUpdateProfile: userUpdateProfileReducer
+    userUpdateProfile: userUpdateProfileReducer,
+    orderCreate: orderCreateReducer
 });
 
 // Checking the user's browser storage for cart items
