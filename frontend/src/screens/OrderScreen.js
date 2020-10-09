@@ -46,11 +46,14 @@ const OrderScreen = ({ match }) => {
         }
 
         // Fire on both no order and paid
-        if (!order || successPay) {
+        if (!order || successPay || order._id !== orderId) {
             dispatch({ type: ORDER_PAY_RESET });
             dispatch(getOrderDetails(orderId));
         } else if (!order.isPaid) {
-            if (!window.paypal) addPayPalScript();
+            let isRendered = document.getElementsByClassName("paypal-buttons")
+            if (isRendered.length === 0) {
+                addPayPalScript();
+            }
         } else {
             setSdkReady(true);
         }

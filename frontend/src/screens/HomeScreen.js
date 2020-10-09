@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
+// import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Paginate from "../components/Paginate";
+import Meta from "../components/Meta";
 import { listProducts } from "../actions/productActions";
 
 const HomeScreen = ({ match }) => {
@@ -22,6 +24,7 @@ const HomeScreen = ({ match }) => {
 
     return (
         <>
+            <Meta />
             <h1>Newest Products</h1>
             { loading 
                 ? <Loader />
