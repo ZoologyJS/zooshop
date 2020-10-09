@@ -13,3 +13,4 @@ The site has full integration of:
 *   Pagination
 *   Catalog search
 
+Design and Architecture credit to [Brad Traversey](https://twitter.com/traversymedia)
