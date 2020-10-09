@@ -2,7 +2,7 @@
 
 Feel free to visit the live version of this site hosted below:
 
-[shopzoo.herokuapp.com](https://www.shopzoo.herokuapp.com)
+[shopzoo.herokuapp.com](https://shopzoo.herokuapp.com)
 
 The site has full integration of:
 
