@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import morgan from "morgan";
 import connectDB from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -7,6 +8,10 @@ import orderRoutes from "./routes/orderRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 const app = express();
+
+// if (process.env.NODE_ENV === "development") {
+    app.use(morgan("dev"));
+// }
 
 // Allows accepting JSON from API requests
 app.use(express.json())

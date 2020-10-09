@@ -31,6 +31,9 @@ function App() {
             <Route path="/profile" component={ProfileScreen} />
             <Route path="/product/:id" component={ProductScreen} />
             <Route path="/cart/:id?" component={CartScreen} />
+            <Route path="/search/:keyword" component={HomeScreen} exact />
+            <Route path="/search/:keyword/page/:pageNumber" component={HomeScreen} exact />
+            <Route path="/page/:pageNumber" component={HomeScreen} exact />
           </Container>
         </main>
       <Footer />

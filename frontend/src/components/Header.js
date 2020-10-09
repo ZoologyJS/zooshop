@@ -3,6 +3,8 @@
 // If you don't know who to call, Ghostbusters!
 
 import React from "react";
+import SearchBox from "./SearchBox";
+import { Route } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
@@ -27,6 +29,7 @@ const Header = () => {
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
+                        <Route render={({ history }) => <SearchBox history={history} />} />
                         <Nav className="ml-auto">
                         <LinkContainer to="/cart">
                             <Nav.Link>

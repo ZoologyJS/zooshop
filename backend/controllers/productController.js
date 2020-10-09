@@ -6,9 +6,25 @@ import asyncHandler from "express-async-handler";
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-    const products = await Product.find({});
+    // For pagination
+    const pageSize = 3;
+    const page = Number(req.query.pageNumber) || 1;
+    
+    const keyword = req.query.keyword 
+        ? {
+            name: {
+                $regex: req.query.keyword, // Matching incomplete words
+                $options: "i" // Case insensitive
+            }
+        }
+        : {};
+    
+    const count = await Product.countDocuments({ ...keyword });
+    const products = await Product.find({ ...keyword })
+        .limit(pageSize) // Limit results by pageSize #
+        .skip(pageSize * (page - 1)); // To make sure each page has the right items
 
-    res.json(products);
+    res.json({ products, page, pages: Math.ceil(count / pageSize) });
 })
 
 // @desc    Fetch single product
