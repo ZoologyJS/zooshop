@@ -35,10 +35,10 @@ const ProductScreen = ({ history, match }) => {
                     <>
                         <Meta title={product.name} />
                         <Row>
-                            <Col md={6}>
-                                <Image src={product.image} alt={product.name} className="border border-dark rounded" fluid/>
+                            <Col md={5}>
+                                <Image src={product.image} alt={product.name} className="border border-secondary rounded" fluid />
                             </Col>
-                            <Col md={3}>
+                            <Col md={4}>
                                 <ListGroup variant="flush">
                                     <ListGroup.Item>
                                         <h3>{product.name}</h3>
