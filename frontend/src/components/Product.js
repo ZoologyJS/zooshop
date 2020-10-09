@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
 
@@ -13,6 +13,7 @@ const Product = ({ product }) => {
                 <Link to={`/product/${product._id}`}>
                     <Card.Title as="div">
                         <b>{product.name}</b>
+                        {' '}{product.price > 100 && <Badge variant="success" className="rounded">New</Badge>}
                     </Card.Title>
                 </Link>
                 <Card.Text as="div">
