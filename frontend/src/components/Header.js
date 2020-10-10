@@ -16,13 +16,15 @@ const Header = () => {
     // Grabbing login info from global Redux state/store
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
-    
+    // console.log(userInfo.name)
+    // userInfo.name = userInfo.name.indexOf(" ") !== -1 ? userInfo.name.split(" ")[0] : userInfo.name;
+
     const logoutHandler = () => {
         dispatch(logout())
     }
     return (
         <header>
-            <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+            <Navbar style={{height:"70px"}} bg="dark" variant="dark" expand="lg" collapseOnSelect>
                 <Container>
                     <LinkContainer to="/">
                         <Navbar.Brand>Zoo Shop</Navbar.Brand>
@@ -37,7 +39,7 @@ const Header = () => {
                             </Nav.Link>
                         </LinkContainer>
                         { userInfo ? (
-                            <NavDropdown title={userInfo.name} id="username">
+                            <NavDropdown title={userInfo.name.split(" ")[0]} id="username">
                                 <LinkContainer to="/profile">
                                     <NavDropdown.Item>
                                         <i className="fas fa-user-cog"></i> Profile

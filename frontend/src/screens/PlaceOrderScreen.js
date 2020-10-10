@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { createOrder } from "../actions/orderActions";
+import { clearCart } from "../actions/cartActions";
 
 const PlaceOrderScreen = ({ history }) => {
     const dispatch = useDispatch();
@@ -31,8 +32,8 @@ const PlaceOrderScreen = ({ history }) => {
     }, [history, success])
 
     // Dispatches the order to be placed with cart items.
-    const placeOrderHandler = () => {
-        dispatch(createOrder({
+    const placeOrderHandler = async () => {
+        await dispatch(createOrder({
             orderItems: cart.cartItems,
             shippingAddress: cart.shippingAddress,
             paymentMethod: cart.paymentMethod,
@@ -41,6 +42,7 @@ const PlaceOrderScreen = ({ history }) => {
             taxPrice: cart.taxPrice,
             totalPrice: cart.totalPrice
         }));
+        dispatch(clearCart());
     }
 
     return (
@@ -53,7 +55,7 @@ const PlaceOrderScreen = ({ history }) => {
                         <ListGroup.Item>
                             <h2>Shipping</h2>
                             <p>
-                                <strong>Address:</strong>
+                                <strong>Address: </strong>
                                 {cart.shippingAddress.address}, 
                                 {cart.shippingAddress.city}.{" "}
                                 {cart.shippingAddress.postalCode},{" "} 

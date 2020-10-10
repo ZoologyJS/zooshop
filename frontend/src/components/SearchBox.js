@@ -27,7 +27,7 @@ const SearchBox = ({ history }) => {
                 type="submit"
                 variant="outline-success"
                 className="pt-2 pb-2 pl-3 pr-3  rounded">
-                {<i class="fa fa-search"/>}
+                {<i style={{fontSize:"14px"}} className="fa fa-search"/>}
             </Button>
         </Form>
     )
