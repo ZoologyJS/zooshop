@@ -67,7 +67,6 @@ const ProductScreen = ({ history, match }) => {
            
                                 )}
                             </Carousel>
-                   
                             </Col>
                             <Col md={4}>
                                 <ListGroup variant="flush">
