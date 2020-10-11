@@ -6,9 +6,10 @@ import React from "react";
 import SearchBox from "./SearchBox";
 import { Route } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Image, Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
+
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -26,7 +27,8 @@ const Header = () => {
         <header>
             <Navbar style={{height:"70px"}} bg="dark" variant="dark" expand="lg" collapseOnSelect>
                 <Container>
-                    <LinkContainer to="/">
+                    {/* <Image src={require("../whale1.png")}></Image> */}
+                    <LinkContainer className="ml-2" to="/">
                         <Navbar.Brand>Zoo Shop</Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
