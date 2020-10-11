@@ -64,7 +64,6 @@ const ProductScreen = ({ history, match }) => {
                                         />
                                     </Carousel.Item>
                                         )
-           
                                 )}
                             </Carousel>
                             </Col>
