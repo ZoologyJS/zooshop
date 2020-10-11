@@ -13,6 +13,9 @@ node_modules/
 /frontend/build
 
 # misc
+/backend/data_seeder/products.js
+/backend/data_seeder/users.js
+/backend/data_seeder/seeder.js
 .DS_Store
 .env
 .env.local

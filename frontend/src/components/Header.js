@@ -27,9 +27,9 @@ const Header = () => {
         <header>
             <Navbar style={{height:"70px"}} bg="dark" variant="dark" expand="lg" collapseOnSelect>
                 <Container>
-                    {/* <Image src={require("../whale1.png")}></Image> */}
+                    <Image className="sneaks mr-2" src={require("../sneakers.png")}></Image>
                     <LinkContainer className="ml-2" to="/">
-                        <Navbar.Brand>Zoo Shop</Navbar.Brand>
+                        <Navbar.Brand>Zoo's Shoes</Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

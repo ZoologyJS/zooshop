@@ -16,6 +16,7 @@ const HomeScreen = ({ match }) => {
 
     const dispatch = useDispatch();
     const productList = useSelector( state => state.productList );
+    console.log("prodlist from state", productList)
     const { loading, error, products, page, pages } = productList;
 
     useEffect(() => {
@@ -35,7 +36,7 @@ const HomeScreen = ({ match }) => {
                         <Row>
                             {products.map((product) => (
                                 <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                                    <Product product={product}/>
+                                    <Product products={product}/>
                                 </Col>
                             ))}
                         </Row>
@@ -44,7 +45,8 @@ const HomeScreen = ({ match }) => {
                             page={page} 
                             keyword={keyword 
                                 ? keyword 
-                                : ""}>
+                                : ""
+                                }>
                         </Paginate>
                     </>
             }   

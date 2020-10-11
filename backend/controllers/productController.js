@@ -1,13 +1,12 @@
-import Product from "../models/productModel.js";
+import Products from "../models/productModel.js";
 import asyncHandler from "express-async-handler";
-
 
 // @desc    Fetch all products
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
     // For pagination
-    const pageSize = 6;
+    const pageSize = 8;
     const page = Number(req.query.pageNumber) || 1;
     
     const keyword = req.query.keyword 
@@ -19,8 +18,8 @@ const getProducts = asyncHandler(async (req, res) => {
         }
         : {};
     
-    const count = await Product.countDocuments({ ...keyword });
-    const products = await Product.find({ ...keyword })
+    const count = await Products.countDocuments({ ...keyword });
+    const products = await Products.find({ ...keyword })
         .limit(pageSize) // Limit results by pageSize #
         .skip(pageSize * (page - 1)); // To make sure each page has the right items
 
@@ -31,7 +30,7 @@ const getProducts = asyncHandler(async (req, res) => {
 // @route   GET /api/products/:id
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
-    const product = await Product.findById(req.params.id);
+    const product = await Products.findById(req.params.id);
 
     // Does the product exist?
     if (product) {

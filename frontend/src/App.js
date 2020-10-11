@@ -29,7 +29,7 @@ function App() {
             <Route path="/order/:id" component={OrderScreen} />
             <Route path="/register" component={RegisterScreen} />
             <Route path="/profile" component={ProfileScreen} />
-            <Route path="/product/:id" component={ProductScreen} />
+            <Route path="/products/:id" component={ProductScreen} />
             <Route path="/cart/:id?" component={CartScreen} />
             <Route path="/search/:keyword" component={HomeScreen} exact />
             <Route path="/search/:keyword/page/:pageNumber" component={HomeScreen} exact />

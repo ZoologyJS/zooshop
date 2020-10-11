@@ -14,3 +14,19 @@ h1 {
 .rating span {
   margin: 0.1em;
 }
+
+.carousel-control-next-icon {
+  background-image: url("https://www.flaticon.com/svg/static/icons/svg/271/271228.svg")
+}
+
+.carousel-control-prev-icon {
+  background-image: url("https://www.flaticon.com/svg/static/icons/svg/271/271220.svg")
+}
+
+.card {
+  max-height: 450px;
+}
+
+.sneaks {
+  width: 40px
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Card, Button, Image, ListGroup, Row, Col, Form} from "react-bootstrap";
+import { Carousel, Card, Button, Image, ListGroup, Row, Col, Form} from "react-bootstrap";
 import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -12,15 +12,30 @@ const ProductScreen = ({ history, match }) => {
     const [qty, setQty] = useState(1);
     const dispatch = useDispatch();
     const productDetails = useSelector(state => state.productDetails);
-    const { loading, error, product } = productDetails;
+    const { loading, error, products } = productDetails;
 
     useEffect(()=> {
         dispatch(listProductDetails(match.params.id))
+        // if (products.image) console.log("tst",[...Array(products.image)][0])
     }, [dispatch, match])
 
     const addToCartHandler = () => {
         history.push(`/cart/${match.params.id}?qty=${qty}`);
     }
+
+    // const returnCaro = () => {
+
+        // return products.image.map((img,i) => (
+        //     <Carousel.Item>
+        //         <Image
+        //             className="d-block w-100"
+        //             src={img}
+        //             alt={`Picture ${i}`}
+        //         />
+        //     </Carousel.Item>
+        // ))
+    // }
+    
 
     return (
         <>
@@ -33,24 +48,40 @@ const ProductScreen = ({ history, match }) => {
                     ? <Message variant="danger">{error}</Message>
                     : 
                     <>
-                        <Meta title={product.name} />
+                        <Meta title={products.name} />
                         <Row>
                             <Col md={5}>
-                                <Image src={product.image} alt={product.name} className="border border-secondary rounded" fluid />
+                            <Carousel interval={null}>
+                                {/* WHY DOES THIS WORK??? */}
+                                { products.image && [...Array(products.image).values()].map((img,i) => 
+                                    img.map(x => 
+                                    <Carousel.Item>
+                                        <Image
+                                            className="d-block w-100"
+                                            src={x}
+                                            alt={`Picture ${i}`}
+                                            key={i}
+                                        />
+                                    </Carousel.Item>
+                                        )
+           
+                                )}
+                            </Carousel>
+                   
                             </Col>
                             <Col md={4}>
                                 <ListGroup variant="flush">
                                     <ListGroup.Item>
-                                        <h3>{product.name}</h3>
+                                        <h3>{products.name}</h3>
                                     </ListGroup.Item>
                                     <ListGroup.Item>
-                                        <Rating value={product.rating} text={`${product.numReviews} reviews`}></Rating>
+                                        <Rating value={products.rating} text={`${products.numReviews} reviews`}></Rating>
                                     </ListGroup.Item>
                                     <ListGroup.Item>
-                                        Price: ${product.price}
+                                        Price: ${products.price}
                                     </ListGroup.Item>
                                     <ListGroup.Item>
-                                        {product.description}
+                                        {products.description}
                                     </ListGroup.Item>
                                 </ListGroup>
                             </Col> 
@@ -63,7 +94,7 @@ const ProductScreen = ({ history, match }) => {
                                                     Price:
                                                 </Col>
                                                 <Col>
-                                                    ${product.price}
+                                                    ${products.price}
                                                 </Col>
                                             </Row>
                                         </ListGroup.Item>
@@ -73,11 +104,11 @@ const ProductScreen = ({ history, match }) => {
                                                     Status:
                                                 </Col>
                                                 <Col>
-                                                    {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
+                                                    {products.countInStock > 0 ? "In Stock" : "Out of Stock"}
                                                 </Col>
                                             </Row>
                                         </ListGroup.Item>
-                                        {product.countInStock > 0 && (
+                                        {products.countInStock > 0 && (
                                             <ListGroup.Item>
                                                 <Row>
                                                     <Col>Qty:</Col>
@@ -86,7 +117,7 @@ const ProductScreen = ({ history, match }) => {
                                                             as="select" 
                                                             alue={qty} 
                                                             onChange={e => setQty(e.target.value)}>
-                                                                {[...Array(product.countInStock).keys()].map(x => (
+                                                                {[...Array(products.countInStock).keys()].map(x => (
                                                                     <option key={x + 1} value={x + 1}>
                                                                         {x + 1}
                                                                     </option>
@@ -101,7 +132,7 @@ const ProductScreen = ({ history, match }) => {
                                                 onClick={addToCartHandler}
                                                 className="btn-block rounded" 
                                                 type="button" 
-                                                disabled={product.countInStock === 0 ? true : false}>
+                                                disabled={products.countInStock === 0 ? true : false}>
                                                 Add to Cart
                                             </Button>
                                         </ListGroup.Item>

@@ -1,4 +1,4 @@
-## Personal eCommerce site using MERN stack (React, Express, MongoDB, Node.js) + Bootstrap & Redux
+## Zoo's Shoes - An eCommerce site using MERN stack (React, Express, MongoDB, Node.js) + Bootstrap & Redux
 
 Feel free to visit the live version of this site hosted below:
 
@@ -12,4 +12,6 @@ The site has full integration of:
 *   PayPal (and future Stripe payment) checkout
 *   Pagination
 *   Catalog search
+
+##### **Nothing is actually for sale, and while checkout works, it uses a sandbox version of PayPal.**
 
