@@ -4,6 +4,8 @@ Feel free to visit the live version of this site hosted below:
 
 shopzoo.herokuapp.com
 
+![screenshot](https://i.imgur.com/gog5Ykl.png)
+
 The site has full integration of:
 
 *   User accounts/login state management
